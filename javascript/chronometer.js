@@ -12,16 +12,20 @@ class Chronometer {
       {
         callback();
       }
-      this.currentTime += 1;
-    }, 1000);
+      this.currentTime += 10;
+    }, 10);
   }
 
   getMinutes() {
-    return Math.floor(this.currentTime / 60);
+    return Math.floor(this.currentTime / (60 * 1000)) % 60;
   }
 
   getSeconds() {
-    return this.currentTime % 60;
+    return Math.floor((this.currentTime /1000 ) % 60);
+  }
+
+  getMilliSeconds() {
+    return Math.floor((this.currentTime % 1000) / 10) ;
   }
 
   computeTwoDigitNumber(value) {
@@ -33,6 +37,7 @@ class Chronometer {
     }
   }
 
+
   stop() {
     clearInterval(this.intervalId);
   }
@@ -42,7 +47,9 @@ class Chronometer {
   }
 
   split() {
-    return this.computeTwoDigitNumber(this.getMinutes()) + ':' + this.computeTwoDigitNumber(this.getSeconds())
+    return this.computeTwoDigitNumber(this.getMinutes()) 
+    + ':' + this.computeTwoDigitNumber(this.getSeconds()) 
+    + ':' + this.computeTwoDigitNumber(this.getMilliSeconds());
   }
 }
 
@@ -51,3 +58,4 @@ class Chronometer {
 if (typeof module !== 'undefined') {
   module.exports = Chronometer;
 }
+

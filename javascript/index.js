@@ -20,7 +20,8 @@ function printTime() {
   intervalId = setInterval(() => {
     printMinutes();
     printSeconds();
-  }, 1000)
+    printMilliseconds();
+  }, 5)
 }
 
 function printMinutes() {
@@ -42,14 +43,20 @@ function printSeconds() {
   } else {
     secDecElement.innerText = Math.floor(seconds / 10);
     secUniElement.innerText = seconds % 10;
-    console.log(seconds % 60);
   }
 }
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
-}
+  
+  let milliSeconds = chronometer.getMilliSeconds();
+  if (milliSeconds < 10) {
+    milDecElement.innerText = "0"
+    milUniElement.innerText = milliSeconds;
+  } else {
+    milDecElement.innerText = Math.floor(milliSeconds / 10);
+    milUniElement.innerText = milliSeconds % 10;
+  }}
 
 function printSplit() {
   let split = document.createElement("li");
@@ -127,3 +134,5 @@ btnRightElement.addEventListener('click', () => {
   }
 
 });
+
+
