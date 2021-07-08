@@ -17,11 +17,17 @@ let intervalId = null;
 
 function printTime() {
   // ... your code goes here
-  intervalId = setInterval(() => {
+  // intervalId = setInterval(() => {
+  //   printMinutes();
+  //   printSeconds();
+  //   printMilliseconds();
+  // }, 5)
+
     printMinutes();
     printSeconds();
     printMilliseconds();
-  }, 5)
+
+  
 }
 
 function printMinutes() {
@@ -109,7 +115,7 @@ btnLeftElement.addEventListener('click', () => {
     chronometer.stop();
     clearInterval(intervalId);
   } else if (btnLeftElement.classList.contains("start")) {
-    chronometer.start();
+    chronometer.start(printTime);
     setSplitBtn();
     setStopBtn();
     printTime();
@@ -131,6 +137,8 @@ btnRightElement.addEventListener('click', () => {
     minUniElement.innerText = "0";
     secDecElement.innerText = "0";
     secUniElement.innerText = "0";
+    milDecElement.innerText = "0";
+    milUniElement.innerText = "0";
   }
 
 });
